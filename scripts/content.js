@@ -1,5 +1,7 @@
 const article = document.querySelector("article");
 
+article != null ? console.log('theres an article!') : console.log('none!')
+
 // `document.querySelector` may return null if the selector doesn't match anything.
 if (article) {
     const text = article.textContent;
@@ -18,5 +20,11 @@ if (article) {
     // Support for article docs with date
     const date = article.querySelector("time")?.parentNode;
 
-    (date ?? heading).insertAdjacentElement("afterend", badge);
+    const web_store = article.querySelector('chrome-web-store')
+    const insertionPoint = date ?? heading ?? web_store;
+
+    if (insertionPoint) {
+        insertionPoint.insertAdjacentElement("afterend", badge);
+    }
+
 }
